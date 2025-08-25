@@ -1,0 +1,21 @@
+16:10:10 **** Incremental Build of configuration Debug for project F103 ****
+make -j20 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F103xB -c -I../Inc -I"E:/D drive/setup_F103/F103/CMSIS/Device/ST/STM32F1xx/Include" -I"E:/D drive/setup_F103/F103/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "F103.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\D drive\setup_F103\F103\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F103.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F103.elf
+ 
+arm-none-eabi-size  F103.elf 
+arm-none-eabi-objdump -h -S F103.elf  > "F103.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	      0	   1568	   2240	    8c0	F103.elf
+Finished building: default.size.stdout
+ 
+Finished building: F103.list
+ 
+16:10:23 **** Incremental Build of configuration Debug for project F103 ****
+make -j20 all 
+arm-none-eabi-size  F103.elf 
+   text	   data	    bss	    dec	    hex	filename
+    672	      0	   1568	   2240	    8c0	F103.elf
+Finished building: default.size.stdout
+ 
