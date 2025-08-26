@@ -16,36 +16,19 @@
  ******************************************************************************
  */
 
-#include <stdint.h>
+
 
 #include "stm32f1xx.h"
 #include "stm32f103xb.h"
+#include "uart.h"
 
-#define LED_PIN     13
-void delay(volatile uint32_t count) {
-    while (count--) {
 
-    }
-}
 int main(void)
 {
-	// 1. Enable clock for GPIOC (bit 4 in APB2ENR)
-	    RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;
-
-	    // 2. Configure PC13 as General-purpose output push-pull
-	    // Each pin has 4 bits in CRH (for pins 8..15)
-	    // MODE13[1:0] = 01 (Output mode, max speed 10 MHz)
-	    // CNF13[1:0]  = 00 (General purpose output push-pull)
-	    GPIOC->CRH &= ~(0xF << ((LED_PIN - 8) * 4)); // Clear bits for PC13
-	    GPIOC->CRH |=  (0x1 << ((LED_PIN - 8) * 4)); // MODE13 = 01, CNF13 = 00
-
-	    while (1) {
-	        // Set PC13 low (LED ON, since it's active low)
-	        GPIOC->BRR = (1 << LED_PIN);
-	        delay(50000);
-
-	        // Set PC13 high (LED OFF)
-	        GPIOC->BSRR = (1 << LED_PIN);
-	        delay(50000);
-	    }
+ uart1_init();
+ while(1)
+ {
+	 //uart_write(USART1,'A');
+	 printf("hello \n\r");
+ }
 }
